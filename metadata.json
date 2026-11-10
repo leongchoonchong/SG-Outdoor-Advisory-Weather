@@ -1,0 +1,8 @@
+{
+  "name": "SG Outdoor Advisory & Weather",
+  "description": "Real-time Singapore weather forecasts, heat index, WBGT heat stress levels, air quality (PSI & PM2.5), and intelligent outdoor activity safety advisories.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

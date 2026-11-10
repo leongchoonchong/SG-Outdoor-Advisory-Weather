@@ -1,0 +1,133 @@
+export interface SingaporeVenue {
+  id: string;
+  name: string;
+  region: 'East' | 'Central' | 'West' | 'North' | 'South' | 'North-East';
+  category: 'Coastal Park' | 'Rainforest & Nature Reserve' | 'Waterfront Promenade' | 'Urban Garden' | 'Heritage Trail';
+  matchedArea: string; // matches NEA 2-hour forecast area
+  description: string;
+  shadeLevel: 'High' | 'Moderate' | 'Low';
+  hasWaterRefills: boolean;
+  hasCoveredShelters: boolean;
+  activities: string[];
+  tips: string;
+}
+
+export const SINGAPORE_VENUES: SingaporeVenue[] = [
+  {
+    id: 'east-coast-park',
+    name: 'East Coast Park (ECP)',
+    region: 'East',
+    category: 'Coastal Park',
+    matchedArea: 'Marine Parade',
+    description: '15km scenic coastline stretching from Marina East to Changi, Singapore’s premier coastal running and cycling track.',
+    shadeLevel: 'Moderate',
+    hasWaterRefills: true,
+    hasCoveredShelters: true,
+    activities: ['Running', 'Cycling', 'Rollerblading', 'Water Sports', 'Family Picnics'],
+    tips: 'Catch refreshing onshore sea breezes. Coastal paths are wide with frequent water points every 1-2km, but direct midday sun exposure is very high along the beach strip.',
+  },
+  {
+    id: 'macritchie-reservoir',
+    name: 'MacRitchie Reservoir & TreeTop Walk',
+    region: 'Central',
+    category: 'Rainforest & Nature Reserve',
+    matchedArea: 'Central Water Catchment',
+    description: 'Central catchment primary and secondary rainforest with dirt trails, scenic boardwalks, and a 250m free-standing suspension bridge.',
+    shadeLevel: 'High',
+    hasWaterRefills: true,
+    hasCoveredShelters: true,
+    activities: ['Trail Running', 'Nature Hiking', 'Kayaking', 'Bird Watching'],
+    tips: 'Dense jungle canopy reduces direct UV and radiant heat significantly, but humidity remains near 90%. Bring at least 1.5L of water as trails are rugged between Ranger Station and Jelutong Tower.',
+  },
+  {
+    id: 'marina-bay-waterfront',
+    name: 'Marina Bay Waterfront & Gardens by the Bay',
+    region: 'Central',
+    category: 'Waterfront Promenade',
+    matchedArea: 'City',
+    description: 'Iconic 3.5km flat loop skirting Marina Bay Sands, the Helix Bridge, Merlion Park, and lush Gardens by the Bay outdoor grounds.',
+    shadeLevel: 'Low',
+    hasWaterRefills: true,
+    hasCoveredShelters: true,
+    activities: ['Brisk Walking', 'Running', 'Sightseeing', 'Evening Strolls'],
+    tips: 'Open asphalt and granite paving generate thermal radiation during midday. Spectacular for early morning or post-sunset dusk runs with immediate shelter access at The Shoppes.',
+  },
+  {
+    id: 'sentosa-island',
+    name: 'Sentosa Island (Siloso & Palawan Beaches)',
+    region: 'South',
+    category: 'Coastal Park',
+    matchedArea: 'Sentosa',
+    description: 'White sandy beaches, shaded coastal promenades, water sports centers, and coastal defense heritage trails.',
+    shadeLevel: 'Low',
+    hasWaterRefills: true,
+    hasCoveredShelters: true,
+    activities: ['Beach Volleyball', 'Kayaking & SUP', 'Swimming', 'Coastal Biking'],
+    tips: 'High solar reflection from ocean and white sand doubles UV dose. Apply water-resistant broad-spectrum SPF50+ every 80 minutes.',
+  },
+  {
+    id: 'botanic-gardens',
+    name: 'Singapore Botanic Gardens (UNESCO)',
+    region: 'Central',
+    category: 'Urban Garden',
+    matchedArea: 'Tanglin',
+    description: 'Historic 82-hectare botanical gardens featuring heritage rain trees, National Orchid Garden, and Jacob Ballas Children’s Garden.',
+    shadeLevel: 'High',
+    hasWaterRefills: true,
+    hasCoveredShelters: true,
+    activities: ['Leisure Walking', 'Family Strolls', 'Jogging', 'Tai Chi / Yoga'],
+    tips: 'Superb canopy shade throughout Swan Lake and Palm Valley. Wide paved paths make it ideal for seniors and families with baby strollers.',
+  },
+  {
+    id: 'southern-ridges',
+    name: 'Southern Ridges & Henderson Waves',
+    region: 'Central',
+    category: 'Heritage Trail',
+    matchedArea: 'Bukit Merah',
+    description: '10km connected green elevated ridge spanning Mount Faber Park, Telok Blangah Hill Park, Forest Walk, and Kent Ridge Park.',
+    shadeLevel: 'Moderate',
+    hasWaterRefills: true,
+    hasCoveredShelters: true,
+    activities: ['Hiking', 'Scenic Photography', 'Stair Climbing', 'Birding'],
+    tips: 'Substantial elevation changes and stairs increase cardiovascular strain. Hydrate generously and watch for slippery timber on Henderson Waves after sudden tropical rains.',
+  },
+  {
+    id: 'bukit-timah-reserve',
+    name: 'Bukit Timah Nature Reserve',
+    region: 'Central',
+    category: 'Rainforest & Nature Reserve',
+    matchedArea: 'Bukit Timah',
+    description: 'Singapore’s highest peak (163m) surrounded by pristine rainforest, steep paved ascents, and challenging rocky jungle trails.',
+    shadeLevel: 'High',
+    hasWaterRefills: true,
+    hasCoveredShelters: true,
+    activities: ['Steep Incline Training', 'Rainforest Trekking', 'Trail Jogging'],
+    tips: 'Steep 30-40% gradient on the initial tarmac ramp pushes heart rates into maximum zones. Take micro-breaks to prevent heat buildup in humid jungle still air.',
+  },
+  {
+    id: 'punggol-waterway',
+    name: 'Punggol Waterway Park & Coney Island',
+    region: 'North-East',
+    category: 'Coastal Park',
+    matchedArea: 'Punggol',
+    description: 'Tranquil freshwater waterway connecting to rustic Coney Island Park with rugged dirt tracks and coastal mangrove boardwalks.',
+    shadeLevel: 'Moderate',
+    hasWaterRefills: true,
+    hasCoveredShelters: true,
+    activities: ['Cycling', 'Distance Running', 'Eco-Trekking', 'Rollerblading'],
+    tips: 'Coney Island has no piped potable water inside the rustic zone; fill hydration bladders at Punggol Point Park before entering.',
+  },
+  {
+    id: 'jurong-lake-gardens',
+    name: 'Jurong Lake Gardens',
+    region: 'West',
+    category: 'Urban Garden',
+    matchedArea: 'Jurong East',
+    description: '90-hectare national gardens in the west featuring Rasok Walk freshwater swamp boardwalk, Clusia Cove, and expansive grasslands.',
+    shadeLevel: 'Moderate',
+    hasWaterRefills: true,
+    hasCoveredShelters: true,
+    activities: ['Jogging', 'Family Water Play', 'Cycling', 'Grassland Walking'],
+    tips: 'Lakeside breeze mitigates thermal stress. Excellent family amenities, water play zones for cooling down kids, and ample shelter pavilions.',
+  },
+];
