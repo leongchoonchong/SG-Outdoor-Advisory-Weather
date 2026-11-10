@@ -10,6 +10,7 @@ import { VenueExplorer } from './components/VenueExplorer';
 import { AirQualityDeepDive } from './components/AirQualityDeepDive';
 import { AiAdvisorPanel } from './components/AiAdvisorPanel';
 import { Footer } from './components/Footer';
+import { ApiStatusModal } from './components/ApiStatusModal';
 import { Loader2, AlertCircle } from 'lucide-react';
 
 const GENERATED_IMAGES = {
@@ -25,6 +26,7 @@ export default function App() {
   const [error, setError] = useState<string | null>(null);
   const [selectedVenue, setSelectedVenue] = useState<SingaporeVenue>(SINGAPORE_VENUES[0]);
   const [consultActivity, setConsultActivity] = useState<string>('Endurance Running');
+  const [isApiStatusOpen, setIsApiStatusOpen] = useState(false);
 
   const fetchWeatherData = useCallback(async (isManual = false) => {
     if (isManual) setIsRefreshing(true);
@@ -111,6 +113,7 @@ export default function App() {
         onRefresh={() => fetchWeatherData(true)}
         isRefreshing={isRefreshing}
         lastUpdated={currentPayload.timestamp}
+        onOpenApiStatus={() => setIsApiStatusOpen(true)}
       />
 
       {/* Main Content Viewport */}
@@ -147,6 +150,12 @@ export default function App() {
           defaultActivity={consultActivity}
         />
       </main>
+
+      {/* Serverless Telemetry Diagnostics Modal */}
+      <ApiStatusModal
+        isOpen={isApiStatusOpen}
+        onClose={() => setIsApiStatusOpen(false)}
+      />
 
       {/* Quiet Footer */}
       <Footer />

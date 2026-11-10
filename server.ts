@@ -4,6 +4,21 @@ import dotenv from 'dotenv';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
+import healthHandler from './api/health';
+import psiAvailabilityHandler from './api/psiavailability';
+import {
+  twoHrForecastHandler,
+  twentyFourHrForecastHandler,
+  fourDayOutlookHandler,
+  airTemperatureHandler,
+  rainfallHandler,
+  psiHandler,
+  pm25Handler,
+  uvHandler,
+  relativeHumidityHandler,
+  windSpeedHandler,
+} from './api/endpoints';
+
 dotenv.config();
 
 const __filename = fileURLToPath(import.meta.url);
@@ -13,6 +28,20 @@ const app = express();
 const port = parseInt(process.env.PORT || '3000', 10);
 
 app.use(express.json());
+
+// Serverless /api Route Bindings
+app.get('/api/health', (req, res) => healthHandler(req, res));
+app.get('/api/psiavailability', (req, res) => psiAvailabilityHandler(req, res));
+app.get('/api/two-hr-forecast', (req, res) => twoHrForecastHandler(req, res));
+app.get('/api/twenty-four-hr-forecast', (req, res) => twentyFourHrForecastHandler(req, res));
+app.get('/api/four-day-outlook', (req, res) => fourDayOutlookHandler(req, res));
+app.get('/api/air-temperature', (req, res) => airTemperatureHandler(req, res));
+app.get('/api/rainfall', (req, res) => rainfallHandler(req, res));
+app.get('/api/psi', (req, res) => psiHandler(req, res));
+app.get('/api/pm25', (req, res) => pm25Handler(req, res));
+app.get('/api/uv', (req, res) => uvHandler(req, res));
+app.get('/api/relative-humidity', (req, res) => relativeHumidityHandler(req, res));
+app.get('/api/wind-speed', (req, res) => windSpeedHandler(req, res));
 
 // Initialize Google Gen AI client with recommended User-Agent header
 const ai = new GoogleGenAI({

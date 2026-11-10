@@ -20,11 +20,25 @@ A full-stack web application providing real-time meteorological information, app
 - **24-Hour Diurnal Heat Timeline**: Interactive hourly visual scrubber displaying diurnal temperature shifts, apparent heat index bars, rain probabilities, and UV intensity to pinpoint optimal morning and evening training windows.
 - **Singapore Park & Venue Explorer**: Detailed micro-climate profiles for 9 iconic Singapore parks and recreation spots (East Coast Park, MacRitchie Reservoir, Marina Bay Waterfront, Sentosa Island, Singapore Botanic Gardens, Southern Ridges, Bukit Timah Reserve, Punggol Waterway, Jurong Lake Gardens).
 - **AI Outdoor Activity Consultant**: Server-side AI advisory powered by Google Gemini (`gemini-3.8-flash`) via the modern `@google/genai` SDK, offering personalized sports science recommendations tailored to target venues, time of day, and participant health profiles.
+- **Serverless Data.gov.sg v2 Pipeline (`/api`)**:
+  - `/api/health.ts`: System uptime, diagnostics, and upstream reachability probe to `api-open.data.gov.sg`.
+  - `/api/psiavailability.ts`: Live PSI stream availability, latency, data freshness, and regional bands.
+  - `/api/dataGovClient.ts`: Keyless, resilient connection client with in-memory caching and 429 backoff handling:
+    - `/api/two-hr-forecast.ts`: 2-hour town nowcasts
+    - `/api/twenty-four-hr-forecast.ts`: 24-hour regional outlook
+    - `/api/four-day-outlook.ts`: 4-day daily forecasts
+    - `/api/air-temperature.ts`: Real-time air temperature stations
+    - `/api/rainfall.ts`: Real-time rain sensor network
+    - `/api/psi.ts`: 24-hr Pollutant Standards Index
+    - `/api/pm25.ts`: 1-hr and 24-hr PM2.5 readings
+    - `/api/uv.ts`: Real-time UV Index
+    - `/api/relative-humidity.ts`: Real-time relative humidity stations
+    - `/api/wind-speed.ts`: Real-time wind speed anemometers
 
 ## Tech Stack
 
 - **Frontend**: React 19, TypeScript, Tailwind CSS v4, Lucide React, Motion
-- **Backend**: Express, Node.js, TypeScript (via tsx)
+- **Backend & Serverless**: Express, Node.js, TypeScript (via tsx), Vercel/serverless compatible
 - **AI Engine**: `@google/genai` (Gemini 3.8 Flash)
 - **Data Sources**: Singapore National Environment Agency (NEA) / Data.gov.sg APIs, Open-Meteo
 - **Bundler & Tooling**: Vite 8, TypeScript 7
